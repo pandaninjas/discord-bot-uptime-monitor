@@ -1,5 +1,5 @@
 const guild_id = 0; // replace the guild_id here;
-const replit_db = "https://kv.replit.com/v0/<token here>/"; // replace the replit db url here
+const replit_db = "https://kv.replit.com/v0/<token here>"; // replace the replit db url here
 const bot_username = "Bot"; // replace bot username here
 addEventListener("fetch", (event) => {
   event.respondWith(handleRequest(event.request));
@@ -14,19 +14,19 @@ addEventListener("scheduled", (event) => {
       for (const member of b.members) {
         console.log(member);
         if (member.username === bot_username) {
-          let res = await fetch(replit_db + "success").then((res) =>
+          let res = await fetch(replit_db + "/success").then((res) =>
             res.text()
           );
           let val = parseInt(res);
-          await fetch(replit_db + "success=" + (val + 1), {
+          await fetch(replit_db + "/success=" + (val + 1), {
             method: "POST",
           });
           return;
         }
       }
-      let res = await fetch(replit_db + "fail").then((res) => res.text());
+      let res = await fetch(replit_db + "/fail").then((res) => res.text());
       let val = parseInt(res);
-      await fetch(replit_db + "fail=" + (val + 1), {
+      await fetch(replit_db + "/fail=" + (val + 1), {
         method: "POST",
       });
       console.log("offline");
@@ -35,9 +35,9 @@ addEventListener("scheduled", (event) => {
 });
 
 async function handleRequest(request) {
-  let offline = await fetch(replit_db + "fail").then((res) => res.text());
+  let offline = await fetch(replit_db + "/fail").then((res) => res.text());
   offline = parseInt(offline);
-  let online = await fetch(replit_db + "success").then((res) => res.text());
+  let online = await fetch(replit_db + "/success").then((res) => res.text());
   online = parseInt(online);
   let percent = (online * 100) / (online + offline);
   return await fetch(
