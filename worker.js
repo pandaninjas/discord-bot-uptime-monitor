@@ -40,6 +40,7 @@ async function handleRequest(request) {
   let online = await fetch(replit_db + "/success").then((res) => res.text());
   online = parseInt(online);
   let percent = (online * 100) / (online + offline);
+  percent = Math.round(percent * 100) / 100;
   return await fetch(
     "https://img.shields.io/badge/uptime-" + percent + "%25-red"
   );
