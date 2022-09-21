@@ -1,4 +1,4 @@
-const guild_id = 0; // replace the guild_id here;
+const guild_widget_url = ""; // replace the guild_widget_url here;
 const replit_db = "https://kv.replit.com/v0/<token here>"; // replace the replit db url here
 const bot_username = "Bot"; // replace bot username here
 addEventListener("fetch", (event) => {
@@ -8,7 +8,7 @@ addEventListener("scheduled", (event) => {
   event.waitUntil(
     (async () => {
       let b = await fetch(
-        `https://discord.com/api/guilds/${guild_id}/widget.json`
+        guild_widget_url
       ).then((res) => res.json());
       console.log(b);
       for (const member of b.members) {
