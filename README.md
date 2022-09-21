@@ -6,7 +6,7 @@ Monitors the uptime of a Discord bot using Cloudflare Workers. Shows a badge con
 3. Enable the widget for the server<br>
 ![image](https://user-images.githubusercontent.com/101084582/191330573-5b471e86-edb1-4ca3-a05c-5d0cd1f5bc92.png)
 ![image](https://user-images.githubusercontent.com/101084582/191330923-1c2c67c6-0691-451e-9ffe-afdc50e97e64.png)<br>
-4. [Copy the guild id](https://github.com/manix84/discord_gmod_addon_v2/wiki/Finding-your-Guild-ID-%28Server-ID%29) into worker.js as `guild_id`
+4. Copy the widget url into worker.js as `guild_widget_url`
 5. Create a [replit](https://replit.com) repl, and run `echo $REPLIT_DB_URL` in the shell. Copy that into worker.js as `replit_db`
 6. Inside the same repl from step 5, run `curl $REPLIT_DB_URL/fail=0` and `curl $REPLIT_DB_URL/success=0`
 7. Create a [Cloudflare Worker](https://dash.cloudflare.com/sign-up/workers)
